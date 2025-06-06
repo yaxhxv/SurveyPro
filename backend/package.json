@@ -1,12 +1,14 @@
 {
-  "name": "backend",
+  "name": "survey-platform-backend",
   "version": "1.0.0",
-  "description": "Survey Platform Backend API",
+  "description": "Backend for the survey platform",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles --forceExit",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": ["survey", "api", "mongodb", "express"],
   "author": "",
@@ -20,8 +22,18 @@
     "cors": "^2.8.5"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.1.3",
     "nodemon": "^3.0.2",
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.10.5"
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/setup.js"
+    ]
   }
 }
